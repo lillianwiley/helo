@@ -5,13 +5,20 @@ class Dashboard extends Component{
         super();
 
         this.state = {
-
+            
         }
     }
 
     render(){
         return(
-            <div>Dashboard</div>
+            <div>
+                <input type="text" placeholder="Search by Title"/>
+                <button>Search</button>
+                <button>Reset</button>
+                My Posts:
+                <input type="checkbox"/>
+            
+            </div>
         )
     }
 }

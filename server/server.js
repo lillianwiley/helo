@@ -9,7 +9,8 @@ const express = require('express')
 const controller = require('./controller');
 
 const {
-    SERVER_PORT
+    SERVER_PORT,
+    SECRET
 } = process.env;
 
 
@@ -24,7 +25,14 @@ massive( process.env.CONNECTION_STRING)
     })
     .catch(err => console.log(err));
 
+app.use(session({
+    secret: SECRET,
+    resave: false,
+    saveUninitialized: true
+}));
 
+app.post('/api/register', controller.register)
+app.post('/api/login', controller.login)
 
 app.listen(SERVER_PORT, () => {
     console.log(` you gotta do dis ${SERVER_PORT}`)
